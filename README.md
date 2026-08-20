@@ -15,8 +15,6 @@ O objetivo é demonstrar, na prática, conceitos de engenharia de dados moderna:
 - **Silver**: limpeza, deduplicação, tipagem, enforcement de schema
 - **Gold**: agregações e métricas de negócio prontas para consumo
 
-*(diagrama detalhado em `docs/architecture.png`)*
-
 ## 🛠️ Stack
 | Camada | Tecnologia |
 |---|---|
@@ -32,11 +30,11 @@ O objetivo é demonstrar, na prática, conceitos de engenharia de dados moderna:
 
 ```
 lakehouse-project/
-├── data/raw/            # Dados de origem (Bronze)
-├── notebooks/           # Notebooks de ingestão e transformação
+├── data/raw/             # Dados de origem (Bronze)
+├── notebooks/            # Notebooks de ingestão e transformação
 ├── dags/                 # DAGs de orquestração (Airflow)
-├── docs/                 # Diagramas e documentação de arquitetura
-├── tests/                 # Testes de qualidade de dados
+├── docs/dashboard/       # Imagens do dashboard exportado (Power BI)
+├── tests/                # Testes de qualidade de dados
 └── requirements.txt
 ```
 
@@ -79,5 +77,17 @@ Painel construído no Power BI a partir das tabelas Gold, para responder à perg
 - **Silver tipa e trata nulos** de forma explícita (datas, booleanos, numéricos) e normaliza colunas multivaloradas (`topics`, `framework_stack`) em arrays — decisão importante porque o dataset bruto trata tudo como string
 - **Gold é modelada em 3 tabelas de propósito específico** (por categoria, por linguagem, top repos) em vez de uma tabela única, facilitando o consumo direto por diferentes visões no Power BI
 
-## 👩‍💻 Autora
-Luísa — Estudante de Administração (Negócios Internacionais) e Engenharia de Dados, em transição de carreira para Arquitetura de Soluções.
+## ✅ Conclusão
+
+Analisando os ~30 mil repositórios do ecossistema de engenharia de IA no GitHub, três conclusões se destacam como as mais relevantes para orientar decisões de adoção de tecnologia:
+
+1. **O ecossistema é jovem e está em explosão de crescimento.** A esmagadora maioria dos repositórios foi criada a partir de 2023, coincidindo com o boom de LLMs e IA generativa. Isso significa que ferramentas "maduras" nesse espaço têm, na prática, poucos anos de estrada — maturidade aqui deve ser medida por atividade e manutenção, não por tempo de mercado.
+
+2. **Atividade é o sinal mais confiável de saúde, mas maturidade de projeto ainda é baixa.** A maior parte dos repositórios está `Active` ou `Maintained`, o que é positivo. Porém, quase todos têm apenas o README básico — poucos têm `CONTRIBUTING.md` ou template de issues. Ou seja: **para escolher um framework, "está ativo" é necessário, mas "tem processo de contribuição estruturado" ainda é exceção, não regra**, o que é um risco a considerar antes de depender de uma ferramenta em produção.
+
+3. **Python domina como linguagem, e licenças permissivas dominam como modelo de distribuição.** Isso reduz o atrito de adoção: a maior parte das ferramentas pode ser usada, integrada e até modificada comercialmente sem barreiras legais relevantes — o que ajuda a explicar a velocidade de adoção do ecossistema como um todo.
+
+**Na prática**, esses achados sugerem uma heurística simples para avaliar uma ferramenta de IA antes de adotá-la: priorizar projetos com atividade recente (`Active`/`Maintained`), licença permissiva e, quando possível, sinais de processo (contribuição, releases regulares) — não apenas volume de estrelas, que mede popularidade, mas não necessariamente confiabilidade.
+
+## 👨‍💻 Autor
+**Vicente Goldani** — Estudante de Engenharia de Software na PUCRS.
