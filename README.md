@@ -62,7 +62,7 @@ flowchart LR
 | Armazenamento | Delta Lake |
 | Orquestração | Apache Airflow |
 | Governança | Unity Catalog / Hive Metastore |
-| Visualização | Power BI |
+| Visualização | Databricks Dashboards |
 | Qualidade de dados | Great Expectations |
 | CI/CD | GitHub Actions |
 
