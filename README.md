@@ -48,7 +48,7 @@ flowchart LR
     A["📥 Fonte de Dados<br/>CSV"] --> B["🥉 Bronze<br/>Raw / schema-on-read"]
     B --> C["🥈 Silver<br/>Limpo &amp; tipado"]
     C --> D["🥇 Gold<br/>Agregado / negócio"]
-    D --> E["📊 Power BI<br/>Dashboard"]
+    D --> E["📊 Databricks<br/>Dashboard"]
 ```
 
 - **Bronze**: dados brutos, sem transformação, apenas landing (schema-on-read)
