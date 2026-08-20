@@ -55,6 +55,25 @@ lakehouse-project/
 - `por_linguagem`: distribuição e saúde por linguagem de programação
 - `top_repos`: top 20 repositórios ativos mais populares
 
+## 📈 Dashboard
+
+Painel construído no Power BI a partir das tabelas Gold, para responder à pergunta de negócio do projeto: **quais frameworks e categorias do ecossistema de IA estão mais populares, mais bem mantidos e mais ativos.**
+
+### Popularidade e manutenção do ecossistema
+![Repositórios por status de manutenção, criação ao longo do tempo, cadência de releases por categoria e distribuição por licença](docs/dashboard/dashboard-popularidade-manutencao.png)
+
+- A maioria dos repositórios está **Active** ou **Maintained** — sinal de um ecossistema de ferramentas de IA saudável, não abandonado
+- O número de repositórios criados **dispara a partir de 2023**, refletindo o boom de frameworks de IA generativa/agentes
+- A categoria **Other/General AI Tooling** tem a maior cadência de releases (dias entre versões), indicando ritmo de evolução acelerado
+- **Licenças permissivas** dominam amplamente, favorecendo adoção comercial
+
+### Saúde e maturidade dos repositórios
+![Maturidade por arquivos-chave (README, CONTRIBUTING, issue template), saúde média por categoria de IA e distribuição por linguagem de programação](docs/dashboard/dashboard-saude-maturidade.png)
+
+- Quase todos os repositórios têm **README**, mas poucos têm **CONTRIBUTING** ou template de issue — maturidade de documentação ainda é baixa fora do básico
+- A **saúde média** (métrica composta de manutenção) é parecida entre categorias, girando em torno de 50%
+- **Python** lidera disparadamente como linguagem do ecossistema de IA, seguido por TypeScript e Go
+
 ## 🎯 Decisões de arquitetura
 - **Bronze mantém o CSV como veio**, sem parsing de tipos — preserva a fonte original para auditoria/reprocessamento
 - **Silver tipa e trata nulos** de forma explícita (datas, booleanos, numéricos) e normaliza colunas multivaloradas (`topics`, `framework_stack`) em arrays — decisão importante porque o dataset bruto trata tudo como string
